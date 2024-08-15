@@ -1,27 +1,41 @@
 <template>
-   <header class=" w-full">
-      <nav class=" flex justify-between items-center p-2 max-w-6xl mx-auto">
-            <a href="#" class="text-xl cursor-pointer font-roboto text-emerald">Ecolib</a>
+   <header class="w-full">
 
-            <ul class="flex gap-2 justify-center items-center">
-               <li>
-                  <a href="#" class="hover:text-emerald cursor-pointer transition-colors duration-200">Conheça o projeto</a>
-               </li>
+      <nav class="max-w-6xl mx-auto py-2 px-2 flex justify-evenly items-center">
+         <a href="#" class="flex items-center gap-1 text-2xl font-roboto text-emerald">Ecolib<leaf height="20" width="20" class="flex-grow"/></a>  
+    
+         
+         <ul class=" flex gap-2">
+            <li>
+                  <a href="#" class="hover:text-emerald transtion duration-200 cursor-pointer font-bookletter text-md"> Ínicio</a>
+            </li>
+            <li>
+                  <a href="#" class="hover:text-emerald transtion duration-200 cursor-pointer font-bookletter text-md"> O que é a Ecolib?</a>
+            </li>
 
-               <li>
-                  <a href="#" class="hover:text-emerald cursor-pointer transition-colors duration-200">Como funciona?</a>
-               </li>
-               <li class="cursor-pointer border bg-emerald text-white hover:text-black rounded-2xl py-1 px-2 duration-200">
-                  <a href="#" class="">Limpe sua estante</a>
-               </li>
-            </ul>
+            <li>
+                  <a href="#" class="cursor-pointer hover:text-emerald transtition duration-200 font-bookletter text-md">Envie seus livros</a>
+            </li>
+         </ul>
+
+
+       
+            <div class="flex items-center">
+           
+                  <book class="cursor-default transition duration-200" height="40" width="40" />
+                  <div class="bg-emerald  rounded-lg w-11 text-center cursor-default">999</div>
+               
+            </div>
+     
       </nav>
-
+      
    </header>
 </template>
 
 
 <script setup>
+import leaf from '../icons/leaf.vue';
+import book from '../icons/book.vue';
 // import { onMounted, ref } from 'vue';
 
 // const formattedDate = ref('')
