@@ -1,32 +1,29 @@
 <template>
-   <header class="w-full">
+   <header class=" rounded-l-md w-[300px] p-2 bg-emerald">
 
-      <nav class="max-w-6xl mx-auto py-2 px-2 flex justify-evenly items-center">
-         <a href="#" class="flex items-center gap-1 text-2xl font-roboto text-emerald">Ecolib<leaf height="20" width="20" class="flex-grow"/></a>  
+      <nav>
     
-         
-         <ul class=" flex gap-2">
-            <li>
-                  <a href="#" class="hover:text-emerald transtion duration-200 cursor-pointer font-bookletter text-md"> Ínicio</a>
-            </li>
-            <li>
-                  <a href="#" class="hover:text-emerald transtion duration-200 cursor-pointer font-bookletter text-md"> O que é a Ecolib?</a>
-            </li>
+         <h1 class="font-bold font-exo uppercase">O que é a ecolib?</h1>
+            <p class="font-exo text-sm">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis sunt hic, officiis aspernatur, voluptas culpa voluptatibus maxime ipsa suscipit quaerat quos tempore, sequi libero quod consequuntur deserunt natus numquam sed.
+            </p>
 
-            <li>
-                  <a href="#" class="cursor-pointer hover:text-emerald transtition duration-200 font-bookletter text-md">Envie seus livros</a>
-            </li>
-         </ul>
-
-
-       
-            <div class="flex items-center">
-           
-                  <book class="cursor-default transition duration-200" height="40" width="40" />
-                  <div class="bg-emerald  rounded-lg w-11 text-center cursor-default">999</div>
-               
-            </div>
+         <h1 class="font-exo mt-4 uppercase font-bold">Como funciona?</h1>
+            <p class="font-exo text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi sequi, beatae sapiente maiores error animi consectetur excepturi quidem. Perferendis ipsa officia consequatur eaque debitis voluptatibus earum ab deserunt. Nam, sit.
+            </p>
      
+
+            <div class="mt-16 flex items-center gap-2">
+               <div class="flex items-center">
+                  <book height="40" width="40"/>
+                  <p class="font-exo bg-white p-1 text-sm rounded-md">9999</p>
+               </div>
+
+               <div class="flex items-center gap-2">
+                  <tree height="40" width="40"/>
+                  <p class="font-exo bg-white p-1 text-sm rounded-md">9999</p>
+               </div>
+            </div>
       </nav>
       
    </header>
@@ -34,7 +31,7 @@
 
 
 <script setup>
-import leaf from '../icons/leaf.vue';
+import tree from '../icons/tree.vue';
 import book from '../icons/book.vue';
 // import { onMounted, ref } from 'vue';
 

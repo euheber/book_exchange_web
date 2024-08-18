@@ -6,12 +6,17 @@ export default {
   ],
   theme: {
     colors: {
-      'emerald': '#50C878',
       'white':  '#ffffff',
-      'black': '#000000'
+      'black': '#000000',
+      'emerald': '#50C878',
+      'champagne-pink': '#F7F7FF'
     }, 
-    fontFamily: {
-      'roboto': ["Roboto", "sans-serif"]
+    extend: {
+      fontFamily: {
+        'roboto': ["Roboto", "sans-serif"],
+        'bookletter': ['"Goudy Bookletter 1911"', 'serif'],
+        'exo': ['"Exo 2"', "sans-serif"]
+      }
     }
   },
   plugins: [],
