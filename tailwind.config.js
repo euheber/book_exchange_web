@@ -9,6 +9,7 @@ export default {
       'white':  '#ffffff',
       'black': '#000000',
       'emerald': '#50C878',
+      'emerald-hover': '#3ba15d',
       'champagne-pink': '#F7F7FF'
     }, 
     extend: {
