@@ -19,7 +19,7 @@ import book from '../icons/book.vue';
 </script>
 
 <template>
-   <header class="w-[300px] p-2 bg-emerald  place-content-center">
+   <header class="w-[300px] p-2 bg-emerald  place-content-center hidden md:block">
 
       <nav>
 
@@ -33,7 +33,7 @@ import book from '../icons/book.vue';
             </p>
      
 
-             <div class="mt-16 flex items-center gap-2">
+             <!-- <div class="mt-16 flex items-center gap-2">
                <div class="flex items-center">
                   <book height="40" width="40"/>
                   <p class="font-exo bg-white p-1 text-sm rounded-md">9999</p>
@@ -43,7 +43,7 @@ import book from '../icons/book.vue';
                   <tree height="40" width="40"/>
                   <p class="font-exo bg-white p-1 text-sm rounded-md">9999</p>
                </div>
-            </div> 
+            </div>  -->
       </nav>
       
    </header>
