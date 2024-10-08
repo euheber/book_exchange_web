@@ -6,6 +6,6 @@ import headerComponent from '@/components/layout/header.vue';
 <template>
   <div class="flex overflow-hidden">
     <headerComponent/>
-    <RouterView class="p-2 w-full h-screen rounded-r-md"/>
+    <RouterView class="w-full h-screen rounded-r-md"/>
   </div>
 </template>

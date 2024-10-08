@@ -4,6 +4,8 @@ import inputComponent from '@/components/layout/input.vue';
 import bookPile from '@/components/icons/book-pile.vue';
 import trees from '@/components/icons/trees.vue';
 import { reactive, ref } from 'vue';
+import router from '@/router';
+
 
 const userInfo = reactive({
   email: "",
@@ -11,10 +13,10 @@ const userInfo = reactive({
   name: ""
 })
 
-let formOk = ref(true)
+
 let isFieldOk = ref(false)
 let iSemailOk =ref(false)
-
+let isSelectOk = ref(false)
 const sendData = (e) => {
   e.preventDefault()
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -33,10 +35,10 @@ const sendData = (e) => {
   }
 
   if(userInfo.state.length > 2) { 
-    alert('Estado inválido')
+    isSelectOk.value = !isSelectOk
   }
 
-  formOk.value = !formOk
+  router.push("/registrar")
 }
 
 </script>
@@ -45,7 +47,7 @@ const sendData = (e) => {
   
   <main class="bg-white overflow-auto">
     <logo class="mt-6 mx-auto"/>
-    <form class="mt-10 mx-auto max-w-96 flex justify-center flex-col gap-2" v-if="formOk">
+    <form class="mt-10 mx-auto max-w-96 flex justify-center flex-col gap-2" >
       <inputComponent v-model:value="userInfo.name" placeholder="Nome" class="border rounded-md p-2" /> 
 
       <inputComponent v-model:value="userInfo.email" placeholder="Email" class="border rounded-md p-2" /> 
@@ -85,23 +87,20 @@ const sendData = (e) => {
 
       <transition name="fade">
         <p v-if="isFieldOk" class="font-exo">Preencha todos os campos</p>
+      
       </transition>
 
       <button class="bg-emerald p-2 hover:bg-emerald-hover transition duration-250 rounded-md" @click="sendData">Enviar</button>
     </form>
 
-   <transition name="fade">
-    <div class="max-w-[450px] p-2 mx-auto mt-10" v-if="!formOk">
-      <h1 class="font-exo text-center">Enviamos um link com todas informações para o seu email!</h1>
-    </div>
-   </transition>
+
 
    <section class="mt-10 mx-auto max-w-[1100px] p-2">
 
     <!-- <a href="https://storyset.com/nature">Nature illustrations by Storyset</a> -->
      <!-- <a href="https://www.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23974708.htm">Freepik</a> -->
-   
-      <div class="flex sm:flex-col justify-center items-center lg:flex-row">
+     <!-- <a href="https://storyset.com/people">People illustrations by Storyset</a> -->
+      <div class="flex flex-col justify-center items-center lg:flex-row">
         <trees class="max-w-[400px] mx-auto"/>
 
         <div>
@@ -111,7 +110,7 @@ const sendData = (e) => {
         </div>
       </div>
 
-      <div class="flex sm:flex-col-reverse justify-center items-center lg:flex-row">
+      <div class="flex flex-col-reverse justify-center items-center lg:flex-row">
         <div>
           <p class="font-exo text-lg text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero maxime porro ratione corrupti commodi recusandae repudiandae quaerat maiores dolorem. Eaque ipsum dolorem illo repellat aliquid sint, maxime tempora ea odio.</p>
           <p class="font-exo text-9xl text-center">9999</p>

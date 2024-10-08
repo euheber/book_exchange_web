@@ -10,7 +10,8 @@ export default {
       'black': '#000000',
       'emerald': '#50C878',
       'emerald-hover': '#3ba15d',
-      'champagne-pink': '#F7F7FF'
+      'champagne-pink': '#F7F7FF',
+      'grey': '#A9A9A9'
     }, 
     extend: {
       fontFamily: {
