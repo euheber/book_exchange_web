@@ -1,10 +1,9 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import arrowLeft from '@/components/icons/arrow-left.vue';
-import inputComponent from '@/components/layout/input.vue';
+import addBook from '@/components/layout/addBook.vue';
 
-
-import {  reactive } from 'vue';
+import { ref, reactive } from 'vue';
 
 const bookInfo = reactive({ 
     bookName: "",
@@ -13,12 +12,15 @@ const bookInfo = reactive({
 })
 
 
+const bookList = ref([])
+
 const myFunction = (e) => { 
     e.preventDefault()
+
+    bookList.push(bookInfo)
     console.log('olá, mundo')
 }
 </script>
-
 
 <template>
     <main class="overflow-auto flex">
@@ -32,19 +34,7 @@ const myFunction = (e) => {
         
         <form action="" class=" max-w-[560px] p-2" @submit.prevent>
     
-            <div class="border w-[300px] h-[400px] rounded-md p-2 place-content-center">
-                <label for="bookName">Nome do livro</label>
-                <inputComponent class="border w-full" id="bookName"/>
-
-                <label for="isbn" class="block mt-5">ISBN</label>
-                <inputComponent class="border block w-full" id="isbn"/>
-
-                <label for="publisher" class="block mt-5">Editora</label>
-                <inputComponent class="border block w-full" id="publisher"/>
-
-
-                <button class="mx-auto font-exo text-lg bg-emerald hover:bg-emerald-hover transition duration-250 p-2 w-48 rounded-md mt-10 block">Adicionar</button>
-            </div>
+        <addBook />
         
         </form>
         
