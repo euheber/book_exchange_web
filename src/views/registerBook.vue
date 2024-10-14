@@ -12,12 +12,12 @@ const bookInfo = reactive({
 })
 
 
-const bookList = ref([])
+const bookList = reactive([])
 
-const myFunction = (e) => { 
+const addComponent = (e) => { 
     e.preventDefault()
 
-    bookList.push(bookInfo)
+    bookList.push(addBook)
     console.log('olá, mundo')
 }
 </script>
@@ -32,10 +32,15 @@ const myFunction = (e) => {
         </div>
 
         
-        <form action="" class=" max-w-[560px] p-2" @submit.prevent>
+        <form action="" class="max-w-[1024px] p-2 flex flex-wrap border" @submit.prevent>
     
-        <addBook />
+        <addBook v-for="books in bookList" :key="books.isbn" />
+            
         
+      
+        <button class=" border p-2 h-16 w-[300px] rounded-md bg-emerald" @click="addComponent">
+            adicionar
+        </button>
         </form>
         
     </main>
