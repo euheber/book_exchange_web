@@ -4,14 +4,68 @@
 
 
 
-/*{
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  text-decoration: none;
+*{
   box-sizing: border-box;
-  border: none;
-  outline: none;
-  font-family: "Roboto", sans-serif;
   scroll-behavior: smooth;
-} */
+}
+
+
+
+.orange {
+  background-color: #FF5733;
+}
+
+.green {
+  background-color: #33FF57;
+}
+
+.purple {
+  background-color: #5733FF;
+}
+
+
+.aqua-green {
+  background-color: #33FFF5;
+}
+
+.yellow {
+  background-color: #FFBE33;
+}
+
+.vibrant-purple {
+  background-color: #8D33FF;
+}
+
+.sky-blue {
+  background-color: #33A1FF;
+}
+
+.rosy-red {
+  background-color: #FF3367;
+}
+
+.mint-green {
+  background-color: #33FF9C;
+}
+
+.magenta {
+  background-color: #F533FF;
+}
+
+.intense-blue {
+  background-color: #3375FF;
+}
+
+.gold-yellow {
+  background-color: #FFDB33;
+}
+
+.neon-green {
+  background-color: #33FFDB;
+}
+
+.burnt-orange {
+  background-color: #FF6E33;
+}
+
+

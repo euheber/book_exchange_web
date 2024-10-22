@@ -14,11 +14,12 @@
                 <button class="mx-auto font-exo text-lg bg-emerald hover:bg-emerald-hover transition duration-250 p-2 w-48 rounded-md mt-10 block" @click="changeCardStyle">Adicionar</button>
                </div>
 
-               <div v-if="!isActive" class="flex flex-col justify-evenly h-full bg-grey p-2 rounded-md">
+               <div v-if="!isActive" class="flex flex-col justify-evenly h-full p-2">
 
-                  <h1 class="font-exo text-5xl flex-0">{{ bookInfo.name }}</h1>
-                  <p class="font-exo text-sm font-medium flex-1"> {{ bookInfo.isbn }}</p>
-                  <p class="font-exo text-3xl text-end"> {{ bookInfo.publisher }}</p>
+                  <h1 class="font-exo text-4xl">{{ bookInfo.name }}</h1>
+                  <p class="font-exo text-sm font-medium "> {{ bookInfo.publisher }}</p>
+                  <div :class="barColorClass"></div>
+                  <p class="font-exo text-2xl text-end"> {{ bookInfo.isbn }}</p>
                </div>
         </div>
         
@@ -33,21 +34,41 @@ const bookInfo = reactive({
     isbn: "",
     publisher: ""
 })
-const activeClass = 'border w-[300px] h-[400px] rounded-md p-2 place-content-center transition-all duration-500'
-const notActiveClass = 'rounded p-2  w-[300px] h-[300px] transition-all duration-500'
-const changeCardStyle = () => { 
+
+let activeClass = ref('border rounded-md w-[500px] h-[400px]  p-2 place-content-center transition-all duration-250 mr-auto')
+let notActiveClass = ref('border rounded-md  w-[500px] max-h-44 mr-auto transition-all duration-250')
+let barColorClass = ref("w-20 min-h-1  rounded-md bg-emerald mb-10")
+let booksList = reactive([])
+let isActive = ref(true)
+
+
+const checkIfFieldIsEmpty = (obj) => { 
+  const values = Object.values(obj)
+  return values.length < 3 
+
+
+}
+const changeCardStyle = () => {
+
+  if(!checkIfFieldIsEmpty(bookInfo)){ 
+    console.log("preencha todos os campos")
+    return
+  }
+
+
+  const colors = [" orange", " purple", " green", " aqua-green", " yellow", " vibrant-purple", " sky-blue", " rosy-red", " mint-green", " magenta", " intense-blue", " gold-yellow", " neon-green", " burnt-orange"]
+  barColorClass.value += colors[Math.floor(Math.random() * colors.length)]
+
+
   booksList.push(bookInfo)
   isActive.value = !isActive.value
 }
-
-const booksList = reactive([])
-let isActive = ref(true)
 
 </script>
 
 
 <style>
- 
+
 
 </style>
 

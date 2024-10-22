@@ -19,7 +19,7 @@ import book from '../icons/book.vue';
 </script>
 
 <template>
-   <header class="w-[300px] p-2 bg-emerald  place-content-center hidden md:block">
+   <header class="w-[300px] p-2 bg-emerald  place-content-center hidden md:block h-screen">
 
       <nav>
 
