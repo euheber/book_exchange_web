@@ -1,23 +1,30 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import arrowLeft from '@/components/icons/arrow-left.vue';
-import addBook from '@/components/layout/addBook.vue';
+import bookComponent from '@/components/layout/addBook.vue';
 
 import { ref, reactive } from 'vue';
 
 
+let components = ref([])
 let bookList = ref([])
-
 const addComponent = (e) => { 
     e.preventDefault()
-    bookList.value.push(addBook)
+    components.value.push(bookComponent)
 }
 
 
 const bookData = (book) => { 
-  
-    console.log(book)
+    const {id} = book
+    const filterBook = bookList.value.filter(item => item.id === id)
+    if(filterBook) return
+    
+    //! filtrar se o livro existe antes de adiciona ao array
+    bookList.value.push(book)
+    console.log(bookList)
 }
+
+
 </script>
 
 <template>
@@ -35,10 +42,7 @@ const bookData = (book) => {
  
 
         <form  class="flex flex-wrap gap-2 h-screen content-start overflow-y-auto max-w-[1100px] border p-4" @submit.prevent>
-       
-            <addBook v-for=" (books, index) in bookList" :key="index" :inputId="index" @sendData="bookData"/>
-       
-       
+            <bookComponent v-for=" ( , index) in components" :key="index" :inputId="index" @sendData="bookData"/>
         </form>
 
     </main>

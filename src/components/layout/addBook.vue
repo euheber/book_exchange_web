@@ -9,9 +9,9 @@
                 <inputComponent class="border block w-full" :id="'isbn-' + props.inputId" v-model="bookInfo.isbn"/>
 
                 <label :for="'publisher-' + props.inputId" class="block mt-5">Editora</label>
-                <inputComponent class="border block w-full " :id="'publisher-' + props.inputId" v-model="bookInfo.publisher"/>
+                <inputComponent class="border block w-full " :id="'publisher-' + props.inputId" v-model="bookInfo.publisher" :value="bookInfo.publisher"/>
                 
-                <p>{{ props.inputId }}</p>
+           
                 <button class="mx-auto font-exo text-lg bg-emerald hover:bg-emerald-hover transition duration-250 p-2 w-48 rounded-md mt-10 block" @click="changeCardStyle">Adicionar</button>
                </div>
 
@@ -21,7 +21,7 @@
                   <p class="font-exo text-sm font-medium "> {{ bookInfo.publisher }}</p>
                   <div :class="barColorClass"></div>
                   <p class="font-exo text-2xl text-end mt-auto"> {{ bookInfo.isbn }}</p>
-            
+                  <button class="text-right font-exo" @click="myFunction">Editar</button>
                </div>
 
                
@@ -34,7 +34,6 @@
 
 <script setup>
 import inputComponent from '@/components/layout/input.vue';
-import { defineEmits, defineProps } from 'vue';
 import { reactive, ref } from 'vue';
 
 const bookInfo = reactive({})
@@ -47,7 +46,10 @@ let fieldWarn = ref(false)
 const props = defineProps(['inputId'])
 
 
-
+const myFunction = () => { 
+  console.log(bookInfo)
+  isActive.value = !isActive.value
+}
 const checkIfFieldIsEmpty = (obj) => { 
   const values = Object.values(obj)
   
@@ -67,7 +69,7 @@ const changeCardStyle = () => {
   const colors = [" orange", " purple", " green", " aqua-green", " yellow", " vibrant-purple", " sky-blue", " rosy-red", " mint-green", " magenta", " intense-blue", " gold-yellow", " neon-green", " burnt-orange"]
   barColorClass.value += colors[Math.floor(Math.random() * colors.length)]
 
-  emit('sendData', bookInfo)
+  emit('sendData', {...bookInfo, id:props.inputId})
   isActive.value = !isActive.value
 }
 
