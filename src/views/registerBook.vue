@@ -16,12 +16,18 @@ const addComponent = (e) => {
 
 const bookData = (book) => { 
     const {id} = book
-    const filterBook = bookList.value.filter(item => item.id === id)
-    if(filterBook) return
+    const findBook = bookList.value.find(item => item.id === id);
+
+    if(!findBook) { 
+        bookList.value.push(book)
+       return
+    } 
     
-    //! filtrar se o livro existe antes de adiciona ao array
-    bookList.value.push(book)
-    console.log(bookList)
+    findBook.name = book.name
+    findBook.publisher = book.publisher
+    findBook.isbn = book.isbn
+    console.log(bookList.value, 'livro adicionado')
+
 }
 
 
