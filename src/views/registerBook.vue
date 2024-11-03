@@ -2,31 +2,30 @@
 import { RouterLink } from 'vue-router';
 import arrowLeft from '@/components/icons/arrow-left.vue';
 import bookComponent from '@/components/layout/addBook.vue';
-
 import { ref, reactive } from 'vue';
 
 
 let components = ref([])
 let bookList = ref([])
+
 const addComponent = (e) => { 
     e.preventDefault()
     components.value.push(bookComponent)
 }
 
+const addBookData = (book) => { 
 
-const bookData = (book) => { 
     const {id} = book
     const findBook = bookList.value.find(item => item.id === id);
 
     if(!findBook) { 
-        bookList.value.push(book)
+       bookList.value.push(book)
        return
     } 
     
     findBook.name = book.name
     findBook.publisher = book.publisher
     findBook.isbn = book.isbn
-    console.log(bookList.value, 'livro adicionado')
 
 }
 
@@ -48,7 +47,7 @@ const bookData = (book) => {
  
 
         <form  class="flex flex-wrap gap-2 h-screen content-start overflow-y-auto max-w-[1100px] border p-4" @submit.prevent>
-            <bookComponent v-for=" ( , index) in components" :key="index" :inputId="index" @sendData="bookData"/>
+            <bookComponent v-for=" ( , index) in components" :key="index" :inputId="index" @sendData="addBookData"/>
         </form>
 
     </main>
@@ -58,14 +57,15 @@ const bookData = (book) => {
 
 <style>
 
-    .parent {
+/* .parent {
 display: grid;
 grid-template-columns: repeat(2, 1fr);
 grid-template-rows: repeat(5, 1fr);
 grid-column-gap: 6px;
 grid-row-gap: 13px;
 
-}
+} */
+
 </style>
 
 <!-- -->

@@ -21,7 +21,7 @@
                   <p class="font-exo text-sm font-medium "> {{ bookInfo.publisher }}</p>
                   <div :class="barColorClass"></div>
                   <p class="font-exo text-2xl text-end mt-auto"> {{ bookInfo.isbn }}</p>
-                  <button class="text-right font-exo" @click="myFunction">Editar</button>
+                  <button class="text-right font-exo" @click="openFormDiv">Editar</button>
                </div>
 
                
@@ -34,38 +34,37 @@
 
 <script setup>
 import inputComponent from '@/components/layout/input.vue';
+import { checkIfFieldIsEmpty } from '@/utils/checkEmptyFields';
 import { reactive, ref } from 'vue';
 
 const bookInfo = reactive({})
 const emit = defineEmits(['sendData'])
-let activeClass = ref('border rounded-md w-[500px] h-[400px]  p-2 place-content-center transition-all duration-250 mr-auto')
-let notActiveClass = ref('border rounded-md w-[500px] min-h-44 max-h-44 transition-all duration-250 overflow-y-auto')
-let barColorClass = ref("w-20 min-h-1  rounded-md bg-emerald mb-10")
-let isActive = ref(true)
-let fieldWarn = ref(false)
 const props = defineProps(['inputId'])
 
+let isActive = ref(true)
+let fieldWarn = ref(false)
+let activeClass = ref('border rounded-md w-[500px] h-[400px]  p-2 place-content-center transition-all duration-250 mr-auto')
+let notActiveClass = ref('border rounded-md w-[500px] min-h-44 max-h-44 transition-all duration-250 overflow-y-auto')
+let barColorClass = ref("w-20 min-h-1 rounded-md mb-10")
 
-const myFunction = () => { 
+const openFormDiv = () => { 
+  barColorClass.value = "w-20 min-h-1 rounded-md mb-10"
   isActive.value = !isActive.value
 }
-const checkIfFieldIsEmpty = (obj) => { 
-  const values = Object.values(obj)
-  
-  return values.length < 3
 
-}
 
 const changeCardStyle = () => {
-  
+
+
   if(checkIfFieldIsEmpty(bookInfo)){ 
+    console.log('chamando função', bookInfo)
     fieldWarn.value = true
     setTimeout(() => { fieldWarn.value = false }, 3000)
     return
   }
 
+  const colors = [" bg-orange", " bg-purple", " bg-green", " bg-aqua-green", " bg-yellow", " bg-vibrant-purple", " bg-sky-blue", " bg-rosy-red", " bg-mint-green", " bg-magenta", " bg-intense-blue", " bg-gold-yellow", " bg-neon-green", " bg-burnt-orange"]
 
-  const colors = [" orange", " purple", " green", " aqua-green", " yellow", " vibrant-purple", " sky-blue", " rosy-red", " mint-green", " magenta", " intense-blue", " gold-yellow", " neon-green", " burnt-orange"]
   barColorClass.value += colors[Math.floor(Math.random() * colors.length)]
 
   emit('sendData', {...bookInfo, id:props.inputId})
