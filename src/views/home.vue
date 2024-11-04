@@ -17,6 +17,7 @@ const userInfo = reactive({
 let isFieldOk = ref(false)
 let iSemailOk =ref(false)
 let isSelectOk = ref(false)
+
 const sendData = (e) => {
   e.preventDefault()
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -38,7 +39,7 @@ const sendData = (e) => {
     isSelectOk.value = !isSelectOk
   }
 
-  router.push("/registrar")
+  router.push(`/registrar/${userInfo.name}`)
 }
 
 </script>

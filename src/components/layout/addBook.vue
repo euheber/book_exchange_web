@@ -3,13 +3,13 @@
         <div :class="[isActive ? activeClass :  notActiveClass]" class="relative">
                <div v-if="isActive">
                 <label :for="'name-' + props.inputId">Nome do livro</label>
-                <inputComponent class="border w-full" :id="'name-' + props.inputId" v-model="bookInfo.name" :value="bookInfo.name"/>
+                <inputComponent class="border w-full" maxlength="50" :id="'name-' + props.inputId" v-model="bookInfo.name" :value="bookInfo.name"/>
                 
                 <label :for="'isbn-' + props.inputId" class="block mt-5">ISBN</label>
-                <inputComponent class="border block w-full" :id="'isbn-' + props.inputId" v-model="bookInfo.isbn" :value="bookInfo.isbn"/>
+                <inputComponent class="border block w-full" maxlength="13" :id="'isbn-' + props.inputId" v-model="bookInfo.isbn" :value="bookInfo.isbn"/>
 
                 <label :for="'publisher-' + props.inputId" class="block mt-5">Editora</label>
-                <inputComponent class="border block w-full " :id="'publisher-' + props.inputId" v-model="bookInfo.publisher" :value="bookInfo.publisher"/>
+                <inputComponent class="border block w-full "  :id="'publisher-' + props.inputId" v-model="bookInfo.publisher" :value="bookInfo.publisher"/>
                 
            
                 <button class="mx-auto font-exo text-lg bg-emerald hover:bg-emerald-hover transition duration-250 p-2 w-48 rounded-md mt-10 block" @click="changeCardStyle">Adicionar</button>

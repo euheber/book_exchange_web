@@ -2,7 +2,10 @@
 import { RouterLink } from 'vue-router';
 import arrowLeft from '@/components/icons/arrow-left.vue';
 import bookComponent from '@/components/layout/addBook.vue';
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
 
 
 let components = ref([])
@@ -26,7 +29,6 @@ const addBookData = (book) => {
     findBook.name = book.name
     findBook.publisher = book.publisher
     findBook.isbn = book.isbn
-
 }
 
 
@@ -37,7 +39,7 @@ const addBookData = (book) => {
         <div class="max-w-96 p-2 border-r">
             <RouterLink class="flex items-center gap-1 hover:text-emerald-hover transition duration-250" to="/"><arrowLeft /> Voltar</RouterLink>
 
-            <h1 class="font-exo text-3xl mt-10"> ${userName}, preencha os campos com os dados dos livros que você está enviando</h1>
+            <h1 class="font-exo text-3xl mt-10"> {{ route.params.username }}, preencha os campos com os dados dos livros que você está enviando</h1>
             <img src="/check_box.gif" alt="" class="mt-10">
             
             <button class=" p-2 rounded-md bg-grey w-80 mx-auto h-[160px] block" @click="addComponent">Adicionar livro</button>
@@ -46,7 +48,7 @@ const addBookData = (book) => {
 
  
 
-        <form  class="flex flex-wrap gap-2 h-screen content-start overflow-y-auto max-w-[1100px] border p-4" @submit.prevent>
+        <form  class="flex flex-wrap gap-2 h-screen content-start overflow-y-auto max-w-[1100px]  p-4" @submit.prevent>
             <bookComponent v-for=" ( , index) in components" :key="index" :inputId="index" @sendData="addBookData"/>
         </form>
 
